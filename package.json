@@ -1,0 +1,78 @@
+{
+  "$schema": "https://enconvo.com/schemas/extension.json",
+  "name": "enconvo_assistant",
+  "version": "0.0.1",
+  "description": "A Bot helping you use EnConvo",
+  "title": "Enconvo Help Assistant",
+  "icon": "icon.png",
+  "author": "EnconvoAI",
+  "categories": [
+    "Chat"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "commands": [
+    {
+      "name": "enconvo_assistant",
+      "icon": "icon.png",
+      "title": "Enconvo Help Assistant",
+      "description": "A Bot helping you use EnConvo",
+      "mode": "no-view",
+      "targetCommand": "chat_with_ai|chat_command",
+      "preferences": [
+        {
+          "name": "recommended_prompts",
+          "description": "The prompts used to generate suggestions",
+          "type": "json",
+          "default": [
+            "What features does EnConvo have?",
+            "How to use EnConvo?",
+            "What is Providers?"
+          ],
+          "title": "Recommended Prompts"
+        },
+        {
+          "name": "attached_knowledge_base",
+          "description": "The knowledgeBase attached to the chat",
+          "type": "attached_knowledge_base",
+          "title": "Attached Knowledge Base",
+          "default": [
+            {
+              "name": "c8cadcd6-1961-45c7-9b80-3383702f9655",
+              "kb_key": "565437aa-5439-40a3-b84f-c48dae4fdf43|c8cadcd6-1961-45c7-9b80-3383702f9655",
+              "title": "Enconvo"
+            }
+          ]
+        },
+        {
+          "name": "force_use_kb",
+          "description": "Force use knowledge base when answer",
+          "type": "checkbox",
+          "title": "Force Use Knowledge Base",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@enconvo/api": "^0.1.9",
+    "@langchain/core": "^0.1.52"
+  },
+  "devDependencies": {
+    "@types/node": "^18.17.14",
+    "@types/react": "18.2.27",
+    "eslint": "^8.33.0",
+    "prettier": "^2.8.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "npm run lint --fix",
+    "format": "prettier --write \"**/*.ts\"",
+    "format:check": "prettier --list-different \"**/*.ts\"",
+    "build": "enconvo",
+    "dev": "enconvo --dev",
+    "publish": "enconvo --publish"
+  }
+}
